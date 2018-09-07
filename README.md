@@ -14,11 +14,11 @@ Installation & Configuration
 1. Configure the NGINX server to perform the concatenation step in the process by adding the following to your WordPress installations NGINX configuration:
 
 ```nginx
-    location /_static/ {
-        fastcgi_pass unix:/var/run/fastcgi.sock;
-        include /etc/nginx/fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root/wp-content/plugins/http-concat/ngx-http-concat.php;
-    }
+location /_static/ {
+    fastcgi_pass heroku-fcgi;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root/content/mu-plugins/nginx-http-concat/ngx-http-concat.php;
+}
 ```
 
 1. Once this is done the installation is ready for use and you can enable/disable the JS and/or CSS concatenation via the plugins interface of your WordPress installation.
